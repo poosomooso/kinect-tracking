@@ -38,8 +38,8 @@ void draw() {
       stroke(col);
 
       drawBody(joints);
-      drawHandState(joints[KinectPV2.JointType_HandRight]);
-      drawHandState(joints[KinectPV2.JointType_HandLeft]);
+      //drawHandState(joints[KinectPV2.JointType_HandRight]);
+      //drawHandState(joints[KinectPV2.JointType_HandLeft]);
     }
   }
 
@@ -49,8 +49,8 @@ void draw() {
 
 //draw the body
 void drawBody(KJoint[] joints) {
-  drawBone(joints, KinectPV2.JointType_Head, KinectPV2.JointType_Neck);
-  drawBone(joints, KinectPV2.JointType_Neck, KinectPV2.JointType_SpineShoulder);
+  //drawBone(joints, KinectPV2.JointType_Head, KinectPV2.JointType_Neck);
+  //drawBone(joints, KinectPV2.JointType_Neck, KinectPV2.JointType_SpineShoulder);
   drawBone(joints, KinectPV2.JointType_SpineShoulder, KinectPV2.JointType_SpineMid);
   drawBone(joints, KinectPV2.JointType_SpineMid, KinectPV2.JointType_SpineBase);
   drawBone(joints, KinectPV2.JointType_SpineShoulder, KinectPV2.JointType_ShoulderRight);
@@ -61,16 +61,16 @@ void drawBody(KJoint[] joints) {
   // Right Arm
   drawBone(joints, KinectPV2.JointType_ShoulderRight, KinectPV2.JointType_ElbowRight);
   drawBone(joints, KinectPV2.JointType_ElbowRight, KinectPV2.JointType_WristRight);
-  drawBone(joints, KinectPV2.JointType_WristRight, KinectPV2.JointType_HandRight);
-  drawBone(joints, KinectPV2.JointType_HandRight, KinectPV2.JointType_HandTipRight);
-  drawBone(joints, KinectPV2.JointType_WristRight, KinectPV2.JointType_ThumbRight);
+  //drawBone(joints, KinectPV2.JointType_WristRight, KinectPV2.JointType_HandRight);
+  //drawBone(joints, KinectPV2.JointType_HandRight, KinectPV2.JointType_HandTipRight);
+  //drawBone(joints, KinectPV2.JointType_WristRight, KinectPV2.JointType_ThumbRight);
 
   // Left Arm
   drawBone(joints, KinectPV2.JointType_ShoulderLeft, KinectPV2.JointType_ElbowLeft);
   drawBone(joints, KinectPV2.JointType_ElbowLeft, KinectPV2.JointType_WristLeft);
-  drawBone(joints, KinectPV2.JointType_WristLeft, KinectPV2.JointType_HandLeft);
-  drawBone(joints, KinectPV2.JointType_HandLeft, KinectPV2.JointType_HandTipLeft);
-  drawBone(joints, KinectPV2.JointType_WristLeft, KinectPV2.JointType_ThumbLeft);
+  //drawBone(joints, KinectPV2.JointType_WristLeft, KinectPV2.JointType_HandLeft);
+  //drawBone(joints, KinectPV2.JointType_HandLeft, KinectPV2.JointType_HandTipLeft);
+  //drawBone(joints, KinectPV2.JointType_WristLeft, KinectPV2.JointType_ThumbLeft);
 
   // Right Leg
   drawBone(joints, KinectPV2.JointType_HipRight, KinectPV2.JointType_KneeRight);
@@ -83,15 +83,20 @@ void drawBody(KJoint[] joints) {
   drawBone(joints, KinectPV2.JointType_AnkleLeft, KinectPV2.JointType_FootLeft);
 
   //Single joints
-  drawJoint(joints, KinectPV2.JointType_HandTipLeft);
-  drawJoint(joints, KinectPV2.JointType_HandTipRight);
+  //drawJoint(joints, KinectPV2.JointType_HandTipLeft);
+  //drawJoint(joints, KinectPV2.JointType_HandTipRight);
   drawJoint(joints, KinectPV2.JointType_FootLeft);
   drawJoint(joints, KinectPV2.JointType_FootRight);
 
-  drawJoint(joints, KinectPV2.JointType_ThumbLeft);
-  drawJoint(joints, KinectPV2.JointType_ThumbRight);
+  //drawJoint(joints, KinectPV2.JointType_ThumbLeft);
+  //drawJoint(joints, KinectPV2.JointType_ThumbRight);
+  
+  //added
+  drawJoint(joints, KinectPV2.JointType_WristLeft);
+  drawJoint(joints, KinectPV2.JointType_WristRight);
+  drawJoint(joints, KinectPV2.JointType_SpineShoulder);
 
-  drawJoint(joints, KinectPV2.JointType_Head);
+  //drawJoint(joints, KinectPV2.JointType_Head);
 }
 
 //draw a single joint
