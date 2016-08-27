@@ -109,8 +109,12 @@ void drawJoint(KJoint[] joints, int jointType) {
 }
 
 void drawBone(KJoint[] joints, int jointType1, int jointType2) {
-  strokeWeight(2.0f + joints[jointType1].getZ()*8);
-  point(joints[jointType2].getX(), joints[jointType2].getY(), joints[jointType2].getZ());
+  drawJoint(joints, jointType1);
+  KJoint one = joints[jointType1];
+  KJoint two = joints[jointType2];
+  line(one.getX(), one.getY(), one.getZ(), two.getX(), two.getY(), two.getZ());
+  //strokeWeight(2.0f + joints[jointType1].getZ()*8);
+  //point(joints[jointType2].getX(), joints[jointType2].getY(), joints[jointType2].getZ());
 }
 
 void drawHandState(KJoint joint) {
