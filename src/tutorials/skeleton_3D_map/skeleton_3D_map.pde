@@ -40,8 +40,8 @@ void draw() {
       KJoint[] joints = skeleton.getJoints();
 
       //draw different color for each hand state
-      drawHandState(joints[KinectPV2.JointType_HandRight]);
-      drawHandState(joints[KinectPV2.JointType_HandLeft]);
+      //drawHandState(joints[KinectPV2.JointType_HandRight]);
+      //drawHandState(joints[KinectPV2.JointType_HandLeft]);
 
       //Draw body
       color col  = skeleton.getIndexColor();
@@ -104,7 +104,10 @@ void drawBody(KJoint[] joints) {
 }
 
 void drawJoint(KJoint[] joints, int jointType) {
-  strokeWeight(2.0f + joints[jointType].getZ()*8);
+  //adjusts stroke weight depending on detected depth (closer is larger, farther is smaller strokes)
+  strokeWeight(0.1/joints[jointType].getZ());
+  //strokeWeight(0.05);
+  //strokeWeight(2.0f + joints[jointType].getZ()*8);
   point(joints[jointType].getX(), joints[jointType].getY(), joints[jointType].getZ());
 }
 
@@ -113,13 +116,18 @@ void drawBone(KJoint[] joints, int jointType1, int jointType2) {
   KJoint one = joints[jointType1];
   KJoint two = joints[jointType2];
   line(one.getX(), one.getY(), one.getZ(), two.getX(), two.getY(), two.getZ());
+  
+  //adjusts stroke weight depending on detected depth (closer is larger, farther is smaller strokes)
+  strokeWeight(0.1/joints[jointType1].getZ());
+  //strokeWeight(0.05);
   //strokeWeight(2.0f + joints[jointType1].getZ()*8);
   //point(joints[jointType2].getX(), joints[jointType2].getY(), joints[jointType2].getZ());
 }
 
 void drawHandState(KJoint joint) {
   handState(joint.getState());
-  strokeWeight(5.0f + joint.getZ()*8);
+  //strokeWeight(5.0f + joint.getZ()*8);
+  strokeWeight(0.1);
   point(joint.getX(), joint.getY(), joint.getZ());
 }
 
