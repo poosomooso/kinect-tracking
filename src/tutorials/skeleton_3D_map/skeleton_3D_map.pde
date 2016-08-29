@@ -2,10 +2,12 @@ import KinectPV2.KJoint;
 import KinectPV2.*;
 
 KinectPV2 kinect;
-
+PrintWriter output;
 
 float zVal = 300;
 float rotX = PI;
+
+int counter = 0;
 
 void setup() {
   size(1024, 768, P3D);
@@ -16,6 +18,8 @@ void setup() {
 
   //enable 3d  with (x,y,z) position
   kinect.enableSkeleton3DMap(true);
+
+  output = createWriter("testJoints.txt");
 
   kinect.init();
 }
@@ -101,6 +105,13 @@ void drawBody(KJoint[] joints) {
   drawJoint(joints, KinectPV2.JointType_ThumbRight);
 
   drawJoint(joints, KinectPV2.JointType_Head);
+  
+  counter++;
+  if(counter >= 100){
+    KJoint head = joints[KinectPV2.JointType_Head];
+    output.println(head.getX()+" "+head.getY()+" "+head.getZ());
+    counter = 0;
+  }
 }
 
 void drawJoint(KJoint[] joints, int jointType) {
@@ -146,4 +157,10 @@ void handState(int handState) {
     stroke(100, 100, 100);
     break;
   }
+}
+
+void keyPressed() {
+  output.flush();
+  output.close();
+  exit();
 }
