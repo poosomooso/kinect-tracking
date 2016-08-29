@@ -51,6 +51,9 @@ void draw() {
 void drawBody(KJoint[] joints) {
   //drawBone(joints, KinectPV2.JointType_Head, KinectPV2.JointType_Neck);
   //drawBone(joints, KinectPV2.JointType_Neck, KinectPV2.JointType_SpineShoulder);
+  
+  displayJointCoords(joints, KinectPV2.JointType_SpineMid);
+  
   drawBone(joints, KinectPV2.JointType_SpineShoulder, KinectPV2.JointType_SpineMid);
   drawBone(joints, KinectPV2.JointType_SpineMid, KinectPV2.JointType_SpineBase);
   drawBone(joints, KinectPV2.JointType_SpineShoulder, KinectPV2.JointType_ShoulderRight);
@@ -97,6 +100,12 @@ void drawBody(KJoint[] joints) {
   drawJoint(joints, KinectPV2.JointType_SpineShoulder);
 
   //drawJoint(joints, KinectPV2.JointType_Head);
+}
+
+void displayJointCoords(KJoint[] joints, int jointType) {
+  text(joints[jointType].getX(), 50, 100);
+  text(joints[jointType].getY(), 50, 120);
+  text(joints[jointType].getZ(), 50, 140);
 }
 
 //draw a single joint
