@@ -107,7 +107,7 @@ void drawBody(KJoint[] joints) {
   drawJoint(joints, KinectPV2.JointType_Head);
   
   counter++;
-  if(counter >= 100){
+  if(counter >= 1){
     KJoint head = joints[KinectPV2.JointType_Head];
     output.println(head.getX()+" "+head.getY()+" "+head.getZ());
     counter = 0;
